@@ -209,9 +209,10 @@ body{background:#0B1118;font-family:var(--font-family);color:var(--text-primary)
 .qr-slot{display:inline-flex}
 
 /* barra de estado: oculta si la app va a pantalla completa, con hora real si no */
-body.fullscreen .sysbar{display:none!important}
-body.fullscreen #screen>*:first-child{padding-top:var(--top)!important}
-body.fullscreen .ds-alert-scrim{padding-top:calc(16px + var(--top))!important}
+/* a pantalla completa la barra de estado del diseño desaparece, pero deja su hueco
+   para que la hora y la batería reales del móvil no tapen la cabecera */
+body.fullscreen .sysbar>*{display:none!important}
+body.fullscreen .sysbar{padding:0!important;height:var(--top);min-height:0;overflow:hidden}
 
 #load{position:absolute;inset:0;z-index:72;display:none;flex-direction:column;align-items:center;
   justify-content:center;gap:0;background:var(--surface);color:var(--text-secondary);
